@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2026
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelDna.Loader", "ExcelDna.Loader\ExcelDna.Loader.csproj", "{59AE5BC6-F37E-4CE3-BAE3-796F807A9882}"
 EndProject
@@ -60,8 +60,8 @@ Global
 		{59AE5BC6-F37E-4CE3-BAE3-796F807A9882}.Release|x86.ActiveCfg = Release|Any CPU
 		{59AE5BC6-F37E-4CE3-BAE3-796F807A9882}.Release|x86.Build.0 = Release|Any CPU
 		{A8D668E2-63C1-4F4E-A01E-E026C6E4D601}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{A8D668E2-63C1-4F4E-A01E-E026C6E4D601}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
-		{A8D668E2-63C1-4F4E-A01E-E026C6E4D601}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{A8D668E2-63C1-4F4E-A01E-E026C6E4D601}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{A8D668E2-63C1-4F4E-A01E-E026C6E4D601}.Debug|Mixed Platforms.Build.0 = Debug|x64
 		{A8D668E2-63C1-4F4E-A01E-E026C6E4D601}.Debug|Win32.ActiveCfg = Debug|Win32
 		{A8D668E2-63C1-4F4E-A01E-E026C6E4D601}.Debug|Win32.Build.0 = Debug|Win32
 		{A8D668E2-63C1-4F4E-A01E-E026C6E4D601}.Debug|x64.ActiveCfg = Debug|x64

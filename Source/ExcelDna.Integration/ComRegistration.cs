@@ -53,14 +53,6 @@ namespace ExcelDna.ComInterop.ComRegistration
                 ppvObject = IntPtr.Zero;
                 object instance = Activator.CreateInstance(_comClass.Type);
 
-                // If not an ExcelRtdServer, create safe wrapper that also maps types.
-                if (_comClass.IsRtdServer && !instance.GetType().IsSubclassOf(typeof(ExcelRtdServer)))
-                {
-                    // wrap instance in RtdWrapper
-                    RtdServerWrapper rtdServerWrapper = new RtdServerWrapper(instance, _comClass.ProgId);
-                    instance = rtdServerWrapper;
-                }
-
                 if (pUnkOuter != IntPtr.Zero)
                 {
                     // For now no aggregation support - could do Marshal.CreateAggregatedObject?
@@ -122,10 +114,6 @@ namespace ExcelDna.ComInterop.ComRegistration
                 else if (riid == ComAPI.guidIDTExtensibility2)
                 {
                     ppvObject = Marshal.GetComInterfaceForObject(_instance, typeof(IDTExtensibility2));
-                }
-                else if (riid == ComAPI.guidIRtdServer)
-                {
-                    ppvObject = Marshal.GetComInterfaceForObject(_instance, typeof(IRtdServer));
                 }
                 else // Unsupported interface for us.
                 {
