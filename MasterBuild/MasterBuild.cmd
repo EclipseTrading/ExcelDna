@@ -1,10 +1,10 @@
 setlocal
 
-set PackageVersion=1.9.0-rc4
-set PackageReferenceVersion=1.9.0-rc4
-set DllVersion=1.9.0.10
+set PackageVersion=26.0.0-eclipse
+set PackageReferenceVersion=26.0.0-eclipse
+set DllVersion=26.0.0
 
-set MSBuildPath="c:\Program Files\Microsoft Visual Studio\2022\Professional\Msbuild\Current\Bin\amd64\MSBuild.exe"
+set MSBuildPath="C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\MSBuild.exe"
 
 set rootPath=%~dp0..\..
 

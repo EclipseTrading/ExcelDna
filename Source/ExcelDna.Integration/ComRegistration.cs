@@ -58,6 +58,7 @@ namespace ExcelDna.ComInterop.ComRegistration
                     ppvObject = IntPtr.Zero;
                     object instance = Activator.CreateInstance(_comClass.Type);
 
+#if false // INFO: DISABLE FUNCTIONALITY SEE: https://groups.google.com/g/exceldna/c/SJ7X2lLeatA?pli=1
                     // If not an ExcelRtdServer, create safe wrapper that also maps types.
                     if (_comClass.IsRtdServer && !instance.GetType().IsSubclassOf(typeof(ExcelRtdServer)))
                     {
@@ -65,6 +66,7 @@ namespace ExcelDna.ComInterop.ComRegistration
                         RtdServerWrapper rtdServerWrapper = new RtdServerWrapper(instance, _comClass.ProgId);
                         instance = rtdServerWrapper;
                     }
+#endif
 
                     if (pUnkOuter != IntPtr.Zero)
                     {
@@ -136,10 +138,12 @@ namespace ExcelDna.ComInterop.ComRegistration
                 {
                     ppvObject = Marshal.GetComInterfaceForObject(_instance, typeof(IDTExtensibility2));
                 }
+#if false // INFO: DISABLE FUNCTIONALITY SEE: https://groups.google.com/g/exceldna/c/SJ7X2lLeatA?pli=1
                 else if (riid == ComAPI.guidIRtdServer)
                 {
                     ppvObject = Marshal.GetComInterfaceForObject(_instance, typeof(IRtdServer));
                 }
+#endif
                 else // Unsupported interface for us.
                 {
                     return ComAPI.E_NOINTERFACE;
