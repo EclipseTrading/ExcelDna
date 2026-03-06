@@ -9,17 +9,17 @@ set MSBuildPath="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\
 @REM set rootPath=%~dp0..\..
 set "rootPath=%~dp0"
 
-set propsfile=%rootPath%\Directory.Build.props
+set propsfile=%rootPath%Directory.Build.props
 copy /Y Directory.Build.props %propsfile%
 PowerShell "(Get-Content %propsfile%) -replace '_VERSION_', '%DllVersion%' | Set-Content %propsfile%"
 @if errorlevel 1 goto end
 
-set targetsfile=%rootPath%\Directory.Build.targets.local
+set targetsfile=%rootPath%Directory.Build.targets.local
 copy /Y PushAll.template.cmd PushAll.cmd
 PowerShell "(Get-Content PushAll.cmd) -replace '_VERSION_', '%PackageVersion%' | Set-Content PushAll.cmd
 @if errorlevel 1 goto end
 
-set targetsfile=%rootPath%\Directory.Build.targets.local
+set targetsfile=%rootPath%Directory.Build.targets.local
 copy /Y Directory.Build.targets %targetsfile%
 PowerShell "(Get-Content %targetsfile%) -replace '_VERSION_', '%PackageReferenceVersion%' | Set-Content %targetsfile%"
 @if errorlevel 1 goto end
@@ -28,24 +28,24 @@ cd %rootPath%\ExcelDna\Build
 call BuildPackages.bat %PackageVersion% %DllVersion% %MSBuildPath%
 @if errorlevel 1 goto end
 
-cd %rootPath%\Registration\Build
-copy /Y %targetsfile% %rootPath%\Registration\Source\Directory.Build.targets
-call BuildPackages.bat %PackageVersion% %MSBuildPath%
-@if errorlevel 1 goto end
+@REM cd %rootPath%\Registration\Build
+@REM copy /Y %targetsfile% %rootPath%\Registration\Source\Directory.Build.targets
+@REM call BuildPackages.bat %PackageVersion% %MSBuildPath%
+@REM @if errorlevel 1 goto end
 
-cd %rootPath%\IntelliSense\Build
-copy /Y %targetsfile% %rootPath%\IntelliSense\Source\Directory.Build.targets
-call BuildPackages.bat %PackageVersion% %MSBuildPath%
-@if errorlevel 1 goto end
+@REM cd %rootPath%\IntelliSense\Build
+@REM copy /Y %targetsfile% %rootPath%\IntelliSense\Source\Directory.Build.targets
+@REM call BuildPackages.bat %PackageVersion% %MSBuildPath%
+@REM @if errorlevel 1 goto end
 
-cd %rootPath%\ExcelDnaDoc\Build
-copy /Y %targetsfile% %rootPath%\ExcelDnaDoc\Directory.Build.targets
-call BuildPackages.bat %PackageVersion% %MSBuildPath%
-@if errorlevel 1 goto end
+@REM cd %rootPath%\ExcelDnaDoc\Build
+@REM copy /Y %targetsfile% %rootPath%\ExcelDnaDoc\Directory.Build.targets
+@REM call BuildPackages.bat %PackageVersion% %MSBuildPath%
+@REM @if errorlevel 1 goto end
 
-cd %rootPath%\DeveloperTools\ExcelDna.Testing\Build
-copy /Y %targetsfile% %rootPath%\DeveloperTools\ExcelDna.Testing\Directory.Build.targets
-call BuildPackages.bat %PackageVersion% %MSBuildPath%
-@if errorlevel 1 goto end
+@REM cd %rootPath%\DeveloperTools\ExcelDna.Testing\Build
+@REM copy /Y %targetsfile% %rootPath%\DeveloperTools\ExcelDna.Testing\Directory.Build.targets
+@REM call BuildPackages.bat %PackageVersion% %MSBuildPath%
+@REM @if errorlevel 1 goto end
 
 :end
