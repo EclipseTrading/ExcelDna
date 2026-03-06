@@ -3,7 +3,7 @@ setlocal
 set PackageNativeAOTVersion=26.0.0-eclipse
 set PackageVersion=26.0.0-eclipse
 set PackageReferenceVersion=26.0.0-eclipse
-set DllVersion=26.0.0.1
+set DllVersion=26.0.0
 
 set MSBuildPath="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe"
 
