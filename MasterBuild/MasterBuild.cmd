@@ -1,31 +1,31 @@
 setlocal
 
+set PackageNativeAOTVersion=26.0.0-eclipse
 set PackageVersion=26.0.0-eclipse
 set PackageReferenceVersion=26.0.0-eclipse
-set DllVersion=26.0.0
+set DllVersion=26.0.0.1
 
 set MSBuildPath="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe"
 
-@REM set rootPath=%~dp0..\..
-set "rootPath=%~dp0"
+set rootPath=%~dp0..\..
 
-set propsfile=%rootPath%Directory.Build.props
+set propsfile=%rootPath%\Directory.Build.props
 copy /Y Directory.Build.props %propsfile%
 PowerShell "(Get-Content %propsfile%) -replace '_VERSION_', '%DllVersion%' | Set-Content %propsfile%"
 @if errorlevel 1 goto end
 
-set targetsfile=%rootPath%Directory.Build.targets.local
+set targetsfile=%rootPath%\Directory.Build.targets.local
 copy /Y PushAll.template.cmd PushAll.cmd
 PowerShell "(Get-Content PushAll.cmd) -replace '_VERSION_', '%PackageVersion%' | Set-Content PushAll.cmd
 @if errorlevel 1 goto end
 
-set targetsfile=%rootPath%Directory.Build.targets.local
+set targetsfile=%rootPath%\Directory.Build.targets.local
 copy /Y Directory.Build.targets %targetsfile%
 PowerShell "(Get-Content %targetsfile%) -replace '_VERSION_', '%PackageReferenceVersion%' | Set-Content %targetsfile%"
 @if errorlevel 1 goto end
 
 cd %rootPath%\ExcelDna\Build
-call BuildPackages.bat %PackageVersion% %DllVersion% %MSBuildPath%
+call BuildPackages.bat %PackageVersion% %PackageNativeAOTVersion% %DllVersion% %MSBuildPath%
 @if errorlevel 1 goto end
 
 @REM cd %rootPath%\Registration\Build
