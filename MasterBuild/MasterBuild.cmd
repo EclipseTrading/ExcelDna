@@ -4,9 +4,10 @@ set PackageVersion=26.0.0-eclipse
 set PackageReferenceVersion=26.0.0-eclipse
 set DllVersion=26.0.0
 
-set MSBuildPath="C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Current\Bin\MSBuild.exe"
+set MSBuildPath="C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe"
 
-set rootPath=%~dp0..\..
+@REM set rootPath=%~dp0..\..
+set "rootPath=%~dp0"
 
 set propsfile=%rootPath%\Directory.Build.props
 copy /Y Directory.Build.props %propsfile%
