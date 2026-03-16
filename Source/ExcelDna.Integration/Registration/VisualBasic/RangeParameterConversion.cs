@@ -20,7 +20,7 @@ namespace ExcelDna.Registration.VisualBasic
             string sheetName = (string)XlCall.Excel(XlCall.xlSheetNm, reference);
             int index = sheetName.LastIndexOf("]");
             sheetName = sheetName.Substring(index + 1);
-            Worksheet ws = app.Sheets[sheetName];
+            Worksheet ws = (Worksheet)app.Sheets[sheetName];
             Range target = app.Range[ws.Cells[reference.RowFirst + 1, reference.ColumnFirst + 1],
                                     ws.Cells[reference.RowLast + 1, reference.ColumnLast + 1]];
 

@@ -9,7 +9,7 @@
             string sheetName = (string)XlCall.Excel(XlCall.xlSheetNm, reference);
             int index = sheetName.LastIndexOf("]");
             sheetName = sheetName.Substring(index + 1);
-            Microsoft.Office.Interop.Excel.Worksheet ws = app.Sheets[sheetName];
+            Microsoft.Office.Interop.Excel.Worksheet ws = (Microsoft.Office.Interop.Excel.Worksheet)app.Sheets[sheetName];
             Microsoft.Office.Interop.Excel.Range target = app.Range[ws.Cells[reference.RowFirst + 1, reference.ColumnFirst + 1], ws.Cells[reference.RowLast + 1, reference.ColumnLast + 1]];
 
             for (int iInnerRef = 1; iInnerRef < reference.InnerReferences.Count; iInnerRef++)
